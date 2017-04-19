@@ -3,6 +3,7 @@ package nl.gewoonhdgaming.ess;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import nl.gewoonhdgaming.ess.commands.ChatAdmin;
 import nl.gewoonhdgaming.ess.listeners.Join;
 import nl.gewoonhdgaming.ess.listeners.chatadmin.ChatEvent;
 
@@ -57,6 +58,7 @@ public class Main extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new Join(), this);
 		pm.registerEvents(new ChatEvent(), this);
+		
 	}
 
 }

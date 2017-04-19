@@ -1,4 +1,4 @@
-package nl.gewoonhdgaming.ess;
+package nl.gewoonhdgaming.ess.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import nl.gewoonhdgaming.ess.Main;
 import nl.gewoonhdgaming.ess.utils.ChatManagerUtils;
 import nl.gewoonhdgaming.ess.utils.ChatUtils;
 
