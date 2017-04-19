@@ -4,6 +4,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import nl.gewoonhdgaming.ess.listeners.Join;
+import nl.gewoonhdgaming.ess.listeners.chatadmin.ChatEvent;
 
 public class Main extends JavaPlugin {
 	
@@ -13,10 +14,15 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		pl = this;
 		
-		
+		registerEvents();
 		loadConfig();
+		registerCommands();
 	}
 	
+	private void registerCommands() {
+		getCommand("chatAdmin").setExecutor(new ChatAdmin());
+	}
+
 	@Override
 	public void onDisable() {
 		saveConfig();
@@ -27,11 +33,20 @@ public class Main extends JavaPlugin {
 	}
 	
 	public void loadConfig() {
+		//Messages
 		this.getConfig().addDefault("Messages.prefix", "&f[&bGHG&6&lEssentials&f]");
 		this.getConfig().addDefault("Messages.join.first", "&bWelcome to the server!");
 		this.getConfig().addDefault("Messages.join.other", "&6Welcome back to the server");
 		this.getConfig().addDefault("Messages.join.allow.first", true);
 		this.getConfig().addDefault("Messages.join.allow.other", true);
+		this.getConfig().addDefault("Messages.commands.permissiondeny", "&4Je mag dat commando niet uitvoeren!");
+		this.getConfig().addDefault("Messages.chatAdmin.cooldown", "Je moet nog %cooldown% secondes wachten!");
+		
+		//ChatManager
+		this.getConfig().addDefault("chatAdmin.cooldown", 5);
+		
+		//Permissions
+		this.getConfig().addDefault("Permissions.chatAdmin.admin", "ghge.chatAdmin.admin");
 		
 		this.getConfig().options().copyDefaults(true);
 		
@@ -41,6 +56,7 @@ public class Main extends JavaPlugin {
 	public void registerEvents() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new Join(), this);
+		pm.registerEvents(new ChatEvent(), this);
 	}
 
 }
