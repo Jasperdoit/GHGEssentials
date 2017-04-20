@@ -31,7 +31,7 @@ public class Teleport implements CommandExecutor {
 							return false;
 						}
 						Player t = Bukkit.getPlayer(args[0]);
-						if(!t.isOnline()) {
+						if(t == null) {
 							p.sendMessage(ChatUtils.prefix + ChatColor.RED + "Speler bestaat niet of is niet online!");
 							return false;
 						}
@@ -45,7 +45,7 @@ public class Teleport implements CommandExecutor {
 								return false;
 							}
 							Player t = Bukkit.getPlayer(args[0]);
-							if(!t.isOnline()) {
+							if(t == null) {
 								p.sendMessage(ChatUtils.prefix + ChatColor.RED + "Speler1 bestaat niet of is niet online!");
 								return false;
 							}
@@ -54,7 +54,7 @@ public class Teleport implements CommandExecutor {
 								return false;
 							}
 							Player t2 = Bukkit.getPlayer(args[1]);
-							if(!t2.isOnline()) {
+							if(t2 == null) {
 								p.sendMessage(ChatUtils.prefix + ChatColor.RED + "Speler2 bestaat niet of is niet online!");
 								return false;
 							}

@@ -16,12 +16,12 @@ public class Join implements Listener{
 		if(!p.hasPlayedBefore()) {
 			if(Main.getPlugin().getConfig().getBoolean("Messages.join.allow.first")) {
 				String msg = Main.getPlugin().getConfig().getString("Messages.join.first");
-				ChatUtils.chatColor(msg);
+				p.sendMessage(ChatUtils.chatColor(msg));
 			}
 		} else {
 			if(Main.getPlugin().getConfig().getBoolean("Messages.join.allow.other")) {
 				String msg = Main.getPlugin().getConfig().getString("Messages.join.other");
-				ChatUtils.chatColor(msg);
+				p.sendMessage(ChatUtils.chatColor(msg));
 			}
 		}
 	}
