@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import nl.gewoonhdgaming.ess.commands.AdminMode;
 import nl.gewoonhdgaming.ess.commands.ChatAdmin;
 import nl.gewoonhdgaming.ess.commands.essentials.Teleport;
+import nl.gewoonhdgaming.ess.files.PlayerData;
 import nl.gewoonhdgaming.ess.listeners.Join;
 import nl.gewoonhdgaming.ess.listeners.adminmode.CompassClick;
 import nl.gewoonhdgaming.ess.listeners.chatadmin.ChatEvent;
@@ -14,28 +15,41 @@ public class Main extends JavaPlugin {
 	
 	static Main pl;
 	
+	private PlayerData playerData;
+	
 	@Override
 	public void onEnable() {
 		pl = this;
 		
+		setupFileSystem();
 		registerEvents();
 		loadConfig();
 		registerCommands();
+		this.playerData = new PlayerData(this);
 	}
 	
 	private void registerCommands() {
 		getCommand("chatAdmin").setExecutor(new ChatAdmin());
-		getCommand("teleport").setExecutor(new Teleport());
 		getCommand("AdminMode").setExecutor(new AdminMode());
+		//ESSENTIALS COMMANDS
+		getCommand("teleport").setExecutor(new Teleport());
+		
 	}
 
 	@Override
 	public void onDisable() {
 		saveConfig();
+		playerData.save();
 	}
 	
 	public static Main getPlugin() {
 		return pl;
+	}
+	
+	public void setupFileSystem() {
+		if(!getDataFolder().exists()) {
+			getDataFolder().mkdirs();
+		}
 	}
 	
 	public void loadConfig() {
@@ -59,7 +73,9 @@ public class Main extends JavaPlugin {
 		
 		this.getConfig().options().copyDefaults(true);
 		
+		//PLAYERDATA
 		saveConfig();
+		playerData.save();
 	}
 	
 	public void registerEvents() {
