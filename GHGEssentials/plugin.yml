@@ -4,9 +4,9 @@ author: [Jasperdoit, rens4000]
 website: https://gewoonhdgaming.nl
 main: nl.gewoonhdgaming.ess.Main
 commands:
-  chatAdmin:
+  chatadmin:
     description: Commando voor chat admin!
     usage: /chatadmin <subcommando> [argumenten]
-  Teleport:
+  teleport:
     description: Teleporteer naar mensen!
     usage: /teleport <speler> [speler]
