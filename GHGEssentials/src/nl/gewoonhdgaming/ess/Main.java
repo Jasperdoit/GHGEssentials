@@ -20,12 +20,12 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		pl = this;
-		
+		this.playerData = new PlayerData(this);
 		setupFileSystem();
 		registerEvents();
 		loadConfig();
 		registerCommands();
-		this.playerData = new PlayerData(this);
+		
 	}
 	
 	private void registerCommands() {
