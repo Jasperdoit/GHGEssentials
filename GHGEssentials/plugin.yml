@@ -13,3 +13,6 @@ commands:
   adminmode:
     description: Schakel adminmode in/uit
     aliases: [am]
+  nick:
+    description: Verander iemands naam
+    aliases: [n]

@@ -23,9 +23,8 @@ public class AdminMode implements CommandExecutor {
 			Player p = (Player) sender;
 			if(args.length == 0) {
 				if(p.hasPermission(Main.getPlugin().getConfig().getString("Permissions.adminmode.admin"))) {
-					p.sendMessage(ChatUtils.prefix + ChatUtils.chatColor("&6&s---------&r&b&lAdminMode&r&6&s---------"));
-					p.sendMessage(ChatUtils.prefix + "/chatadmin adminchat" + ChatColor.GOLD + " - " + ChatColor.RESET + "Zorg ervoor dat alleen admins kunnen praten");
-					p.sendMessage(ChatUtils.prefix + "/chatadmin slowchat" + ChatColor.GOLD + " - " + ChatColor.RESET + "Laat spelers praten om de zoveel secondes!");
+					p.sendMessage(ChatUtils.prefix + ChatUtils.chatColor("&6&m---------&r&b&lAdminMode&r&6&m---------"));
+					p.sendMessage(ChatUtils.prefix + "/adminmode toggle" + ChatColor.GOLD + " - " + ChatColor.RESET + "Schakel adminmode in/uit");
 					}
 			}
 			
@@ -51,13 +50,12 @@ public class AdminMode implements CommandExecutor {
 							AdminModeUtils.gamemode.remove(p);
 							return false;
 						}
+					}else {
+						p.sendMessage(ChatUtils.chatColor(Main.getPlugin().getConfig().getString("Messages.commands.permissiondeny")));
 					}
 				}
 			}
 			
-				if(p.hasPermission(Main.getPlugin().getConfig().getString("Permissions.adminmode.admin"))) {
-				
-				}
 		}
 		return false;
 	}

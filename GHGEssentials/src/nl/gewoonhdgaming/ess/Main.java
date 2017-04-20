@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import nl.gewoonhdgaming.ess.commands.AdminMode;
 import nl.gewoonhdgaming.ess.commands.ChatAdmin;
+import nl.gewoonhdgaming.ess.commands.essentials.Nick;
 import nl.gewoonhdgaming.ess.commands.essentials.Teleport;
 import nl.gewoonhdgaming.ess.files.PlayerData;
 import nl.gewoonhdgaming.ess.listeners.Join;
@@ -33,7 +34,7 @@ public class Main extends JavaPlugin {
 		getCommand("AdminMode").setExecutor(new AdminMode());
 		//ESSENTIALS COMMANDS
 		getCommand("teleport").setExecutor(new Teleport());
-		
+		getCommand("nick").setExecutor(new Nick());
 	}
 
 	@Override
@@ -70,7 +71,8 @@ public class Main extends JavaPlugin {
 		this.getConfig().addDefault("Permissions.adminmode.admin", "ghge.adminmode.admin");
 		this.getConfig().addDefault("Permissions.commands.tp", "ghge.commands.tp");
 		this.getConfig().addDefault("Permissions.commands.tp_naar_iemand_anders", "ghge.commands.tp.other");
-		
+		this.getConfig().addDefault("Permissions.commands.nick", "ghge.commands.nick.other");
+
 		this.getConfig().options().copyDefaults(true);
 		
 		//PLAYERDATA
