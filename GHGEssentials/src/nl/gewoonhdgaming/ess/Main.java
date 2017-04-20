@@ -4,6 +4,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import nl.gewoonhdgaming.ess.commands.ChatAdmin;
+import nl.gewoonhdgaming.ess.commands.essentials.Teleport;
 import nl.gewoonhdgaming.ess.listeners.Join;
 import nl.gewoonhdgaming.ess.listeners.chatadmin.ChatEvent;
 
@@ -22,6 +23,7 @@ public class Main extends JavaPlugin {
 	
 	private void registerCommands() {
 		getCommand("chatAdmin").setExecutor(new ChatAdmin());
+		getCommand("teleport").setExecutor(new Teleport());
 	}
 
 	@Override
@@ -48,6 +50,8 @@ public class Main extends JavaPlugin {
 		
 		//Permissions
 		this.getConfig().addDefault("Permissions.chatAdmin.admin", "ghge.chatAdmin.admin");
+		this.getConfig().addDefault("Permissions.commands.tp", "ghge.commands.tp");
+		this.getConfig().addDefault("Permissions.commands.tp_naar_iemand_anders", "ghge.commands.tp.other");
 		
 		this.getConfig().options().copyDefaults(true);
 		

@@ -3,3 +3,10 @@ version: 1.0
 author: [Jasperdoit, rens4000]
 website: https://gewoonhdgaming.nl
 main: nl.gewoonhdgaming.ess.Main
+commands:
+  chatAdmin:
+    description: Commando voor chat admin!
+    usage: /chatadmin <subcommando> [argumenten]
+  Teleport:
+    description: Teleporteer naar mensen!
+    usage: /teleport <speler> [speler]
