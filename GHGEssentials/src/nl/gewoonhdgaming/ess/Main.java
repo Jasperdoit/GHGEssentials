@@ -3,9 +3,11 @@ package nl.gewoonhdgaming.ess;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import nl.gewoonhdgaming.ess.commands.AdminMode;
 import nl.gewoonhdgaming.ess.commands.ChatAdmin;
 import nl.gewoonhdgaming.ess.commands.essentials.Teleport;
 import nl.gewoonhdgaming.ess.listeners.Join;
+import nl.gewoonhdgaming.ess.listeners.adminmode.CompassClick;
 import nl.gewoonhdgaming.ess.listeners.chatadmin.ChatEvent;
 
 public class Main extends JavaPlugin {
@@ -24,6 +26,7 @@ public class Main extends JavaPlugin {
 	private void registerCommands() {
 		getCommand("chatAdmin").setExecutor(new ChatAdmin());
 		getCommand("teleport").setExecutor(new Teleport());
+		getCommand("AdminMode").setExecutor(new AdminMode());
 	}
 
 	@Override
@@ -49,7 +52,8 @@ public class Main extends JavaPlugin {
 		this.getConfig().addDefault("chatAdmin.cooldown", 5);
 		
 		//Permissions
-		this.getConfig().addDefault("Permissions.chatAdmin.admin", "ghge.chatAdmin.admin");
+		this.getConfig().addDefault("Permissions.chatAdmin.admin", "ghge.chatadmin.admin");
+		this.getConfig().addDefault("Permissions.adminmode.admin", "ghge.adminmode.admin");
 		this.getConfig().addDefault("Permissions.commands.tp", "ghge.commands.tp");
 		this.getConfig().addDefault("Permissions.commands.tp_naar_iemand_anders", "ghge.commands.tp.other");
 		
@@ -62,7 +66,7 @@ public class Main extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new Join(), this);
 		pm.registerEvents(new ChatEvent(), this);
-		
+		pm.registerEvents(new CompassClick(), this);
 	}
 
 }

@@ -6,7 +6,10 @@ main: nl.gewoonhdgaming.ess.Main
 commands:
   chatadmin:
     description: Commando voor chat admin!
-    usage: /chatadmin <subcommando> [argumenten]
+    aliases: [ca]
   teleport:
     description: Teleporteer naar mensen!
-    usage: /teleport <speler> [speler]
+    aliases: [tp]
+  adminmode:
+    description: Schakel adminmode in/uit
+    aliases: [am]
